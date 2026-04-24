@@ -1,0 +1,29 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "This is Namaste React by Peeyush Raj",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piyushrj57/namaste-react.git"
+  },
+  "keywords": [],
+  "author": "Peeyush Raj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/piyushrj57/namaste-react/issues"
+  },
+  "homepage": "https://github.com/piyushrj57/namaste-react#readme",
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  },
+  "dependencies": {
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
+  },
+  "browserlist": [
+    "last 2 Chrome version"
+  ]
+}

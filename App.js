@@ -1,6 +1,7 @@
-const parent = React.createElement("h1", {id: "parent"}, 
-    React.createElement("h1", {id: "child"},
-         React.createElement("h6", {id: "parent"}, "Hello I am a H1 tag"))
+import React from "react"
+import ReactDOM from "react-dom/client"
+const parent = React.createElement("div", {id: "parent"}, 
+    React.createElement("h1", {id: "child"}, "Hello I am a H6 tag")
 );
 
 
