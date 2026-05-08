@@ -4,7 +4,7 @@ import ReactDOM from "react-dom/client";
 const jsxHeading = <h1 id="heading">Hello World from JSX.</h1>;
 
 
-//React Functional Component
+//React Functional Component.
 const Title = () => {
     return <h1 className="head">Namaste React usingJSX </h1>
 }
