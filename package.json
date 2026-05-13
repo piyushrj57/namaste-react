@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "This is Namaste React by Peeyush Raj",
   "scripts": {
-    "start": "parcel index.html",
-    "build": "parcel build index.html",
+    "start": "node --experimental-fetch ./node_modules/parcel/lib/bin.js index.html --hmr-port 1235",
+    "build": "node --experimental-fetch ./node_modules/parcel/lib/bin.js build index.html",
     "test": "jest"
   },
   "repository": {
