@@ -1,9 +1,16 @@
 import { CDN_IMG } from "../utils/constant";
 
 const Restaurantcard = ({resData}) => {
-//    console.log(resData,"resData");
-   const {cloudinaryImageId, name, avgRating, cuisines} = resData?.info;
-   console.log(cloudinaryImageId,"cloudinaryImageId");
+//
+const {
+  cloudinaryImageId,
+  name,
+  avgRating,
+  cuisines,
+  costForTwo,
+  sla: { deliveryTime } = {},
+} = resData?.info || {};
+   
 
     return (
         <div className="res-card">
@@ -11,6 +18,8 @@ const Restaurantcard = ({resData}) => {
             <h3>{name}</h3>
             <h4>{cuisines.join(", ")}</h4>
             <h4>Rating: {avgRating}</h4>
+            <h4>Delivery Time: {deliveryTime} mins</h4>
+            <h4>Cost for Two: {costForTwo}</h4>
         </div>
     )
 }
