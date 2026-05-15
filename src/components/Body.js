@@ -1,14 +1,15 @@
-import {React,useEffect,useState} from "react";
+import { React, useEffect, useState } from "react";
 import Restaurantcard from "./RestaurantCard";
+import Shimmer from "./Shimmer";
 
 
 const Body = () => {
 
-    const [filteredList,setFilteredList] = useState([]);
+    const [filteredList, setFilteredList] = useState([]);
 
     useEffect(() => {
-       fetchData();
-    },[]);
+        fetchData();
+    }, []);
 
     const fetchData = async () => {
         const data = await fetch(
@@ -20,16 +21,14 @@ const Body = () => {
         setFilteredList(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
 
-    if(filteredList.length===0){
-      return  <div>Loading....</div>
-    }
 
 
-    return (
+
+    return (filteredList.length === 0) ? <Shimmer /> : (
         <div className="body">
             <div className="filter">
                 <button className="filter-btn" onClick={() => {
-                    setFilteredList(filteredList.filter((res) => res.info.avgRating > 4.6))
+                    setFilteredList(filteredList.filter((res) => res.info.avgRating > 4))
                 }}>Top Rated Restaurants</button>
             </div>
             <div className="res-container">
