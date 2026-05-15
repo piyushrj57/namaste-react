@@ -1,11 +1,10 @@
 import {React,useEffect,useState} from "react";
 import Restaurantcard from "./RestaurantCard";
-import resList from "../utils/mockData"
 
 
 const Body = () => {
 
-    const [filteredList,setFilteredList] = useState(resList);
+    const [filteredList,setFilteredList] = useState([]);
 
     useEffect(() => {
        fetchData();
@@ -17,7 +16,12 @@ const Body = () => {
             encodeURIComponent("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.97530&lng=77.59100&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
         );
         const json = await data.json();
-        console.log(json);
+
+        setFilteredList(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    }
+
+    if(filteredList.length===0){
+      return  <div>Loading....</div>
     }
 
 
@@ -25,7 +29,7 @@ const Body = () => {
         <div className="body">
             <div className="filter">
                 <button className="filter-btn" onClick={() => {
-                    setFilteredList(resList.filter((res) => res.info.avgRating > 4.6))
+                    setFilteredList(filteredList.filter((res) => res.info.avgRating > 4.6))
                 }}>Top Rated Restaurants</button>
             </div>
             <div className="res-container">
