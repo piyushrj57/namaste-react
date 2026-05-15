@@ -1,4 +1,4 @@
-import {React,useState} from "react";
+import {React,useEffect,useState} from "react";
 import Restaurantcard from "./RestaurantCard";
 import resList from "../utils/mockData"
 
@@ -6,6 +6,21 @@ import resList from "../utils/mockData"
 const Body = () => {
 
     const [filteredList,setFilteredList] = useState(resList);
+
+    useEffect(() => {
+       fetchData();
+    },[]);
+
+    const fetchData = async () => {
+        const data = await fetch(
+            "https://corsproxy.io/?" +
+            encodeURIComponent("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.97530&lng=77.59100&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+        );
+        const json = await data.json();
+        console.log(json);
+    }
+
+
     return (
         <div className="body">
             <div className="filter">
