@@ -23,9 +23,6 @@ const Body = () => {
         setFilteredList(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
 
-
-
-
     return (listOfRestaurants.length === 0) ? <Shimmer /> : (
         <div className="body">
             <div className="filter">
@@ -34,8 +31,8 @@ const Body = () => {
                         setSearchText(e.target.value)
                     }} />
                     <button onClick={() => {
-                      const filteredList=listOfRestaurants.filter((res)=>res.info.name.toLowerCase().includes(searchText.toLowerCase()))
-                      setFilteredList(filteredList)
+                        const filteredList = listOfRestaurants.filter((res) => res.info.name.toLowerCase().includes(searchText.toLowerCase()))
+                        setFilteredList(filteredList)
                     }}>Search</button>
                 </div>
                 <button className="filter-btn" onClick={() => {
