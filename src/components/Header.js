@@ -1,9 +1,10 @@
 
-import {React, useState} from "react";
+import { React, useState } from "react";
 import { CDN_LOGO } from "../utils/constant";
+import { Link } from "react-router-dom";
 
 const Header = () => {
-  const [isloggedIn, setIsLoggedIn] = useState("Login");
+    const [isloggedIn, setIsLoggedIn] = useState("Login");
 
     return (
         <div className="header">
@@ -16,9 +17,10 @@ const Header = () => {
             </div>
             <div className="nav-items">
                 <ul>
-                    <li>Home</li>
-                    <li>About</li>
-                    <li>Contact</li>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/about">About</Link></li>
+                    <li><Link to="/contact">Contact Us</Link></li>
+
                     <li>Cart</li>
                     <button className="profile-button" onClick={() => setIsLoggedIn(isloggedIn === "Login" ? "Logout" : "Login")}>
                         {isloggedIn}
