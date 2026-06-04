@@ -91,3 +91,8 @@
     border-radius: 5px;
     cursor: pointer;
 }
+
+.user-card{
+padding: 10px 10px;
+border:1px solid black;
+}
