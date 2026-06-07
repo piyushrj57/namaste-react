@@ -8,7 +8,7 @@ const RestaurantMenu = () => {
     const [resInfo, setResInfo] = useState(null);
 
     const { resId } = useParams();
-    // console.log(params);
+
     useEffect(() => {
         fetchMenu();
     }, [])
@@ -22,8 +22,6 @@ const RestaurantMenu = () => {
             const text = await data.text();
             console.log("Raw response (first 200 chars):", text.slice(0, 200));
             const json = JSON.parse(text);
-            // console.log(json.data)
-            // console.log(json?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card);
 
             setResInfo(json?.data)
 
