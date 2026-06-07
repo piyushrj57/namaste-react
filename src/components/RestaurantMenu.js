@@ -2,39 +2,21 @@ import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import { MENU_API } from "../utils/constant";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
 
-    const [resInfo, setResInfo] = useState(null);
-
     const { resId } = useParams();
 
-    useEffect(() => {
-        fetchMenu();
-    }, [])
-
-    const fetchMenu = async () => {
-        try {
-            const data = await fetch(
-                MENU_API + resId + "&catalog_qa=undefined&submitAction=ENTER"
-            );
-            console.log("Status:", data.status, "OK:", data.ok);
-            const text = await data.text();
-            console.log("Raw response (first 200 chars):", text.slice(0, 200));
-            const json = JSON.parse(text);
-
-            setResInfo(json?.data)
-
-
-        } catch (err) {
-            console.error("fetchMenu error:", err);
-        }
-    }
+    const resInfo = useRestaurantMenu(resId);
     if (resInfo === null) return <Shimmer />;
 
-    const { name, cloudinaryImageId, costForTwoMessage, cuisines } = resInfo?.cards[2]?.card?.card?.info;
+    const info = resInfo?.cards[2]?.card?.card?.info;
+    if (!info) return <Shimmer />;
 
-    const { itemCards } = resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
+    const { name, cloudinaryImageId, costForTwoMessage, cuisines } = info;
+
+    const { itemCards } = resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card ?? {};
     console.log("itemCards", resInfo)
     return (
         <div className="res-menu">
