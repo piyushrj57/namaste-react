@@ -17,10 +17,11 @@ const Header = () => {
             </div>
             <div className="nav-items">
                 <ul>
-                    <li>Online Status: {useOnlineStatus() ? "Online" : "Offline"}</li>
+                    <li>Online Status: {onlineStatus ? "Online" : "Offline"}</li>
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/about">About</Link></li>
                     <li><Link to="/contact">Contact Us</Link></li>
+                    <li><Link to="/grocery">Grocery</Link></li>
 
                     <li>Cart</li>
                     <button className="profile-button" onClick={() => setIsLoggedIn(isloggedIn === "Login" ? "Logout" : "Login")}>

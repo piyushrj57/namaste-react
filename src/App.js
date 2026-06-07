@@ -7,6 +7,9 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import { lazy, Suspense } from "react";
+
+const Grocery = lazy(() => import("./components/Grocery"));
 
 
 
@@ -14,7 +17,7 @@ const AppLayout = () => {
     return (
         <div className="app">
             <Header />
-            <Outlet/>
+            <Outlet />
         </div>
     );
 };
@@ -40,6 +43,10 @@ const appRouter = createBrowserRouter([
             {
                 path: "/restaurants/:resId",
                 element: <RestaurantMenu />
+            },
+            {
+                path: "/grocery",
+                element: <Suspense fallback="Loading..."><Grocery /></Suspense>
             }
         ],
         errorElement: <Error />
